@@ -1,7 +1,7 @@
 # Pracitca_2
 Thomas Bedoya Rendon &amp; David Guerra Morales
 
-DESCRIPCION DEL PROYTO
+DESCRIPCION DEL PROYECTO
 
 Este sistema en Prolog gestiona el catálogo de vehículos de una concesionaria y permite realizar consultas avanzadas como filtrado por marca, tipo, precio, y generación de reportes estructurados según límites de presupuesto.
 
