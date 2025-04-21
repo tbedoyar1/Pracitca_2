@@ -1,0 +1,42 @@
+---CODIGO---
+
+% Definición del catálogo de vehículos
+vehicle(toyota, rav4, suv, 28000, 2022).
+vehicle(ford, mustang, sport, 45000, 2023).
+vehicle(bmw, x5, suv, 60000, 2021).
+vehicle(honda, civic, sedan, 22000, 2020).
+vehicle(chevrolet, silverado, pickup, 35000, 2022).
+vehicle(nissan, altima, sedan, 24000, 2021).
+vehicle(jeep, wrangler, suv, 32000, 2023).
+vehicle(audi, a4, sedan, 40000, 2022).
+vehicle(mercedes, glc, suv, 55000, 2021).
+vehicle(ford, f150, pickup, 38000, 2023).
+
+% Filtrar vehículos por tipo y presupuesto
+meet_budget(Reference, BudgetMax) :-
+    vehicle(_, Reference, _, Price, _),
+    Price =< BudgetMax.
+
+% Listar vehículos por marca
+list_vehicles_by_brand(Brand, References) :-
+    findall(Reference, vehicle(Brand, Reference, _, _, _), References).
+
+% Generar reporte de vehículos
+generate_report(Brand, Type, Budget, Result) :-
+    findall(Price, (vehicle(Brand, Ref, Type, Price, _), Price =< Budget), Prices),
+    sum_list(Prices, TotalValue),
+    TotalValue =< 1000000, % Asegurarse de que no exceda el límite
+    Result = Prices.
+
+
+---CONSULTAS---
+
+% Caso 1: Listar todos los SUV de Toyota con precio menor a $30,000
+findall(Ref, (vehicle(toyota, Ref, suv, Price, _), Price < 30000), SUV_Toyota),
+
+% Caso 2: Mostrar vehículos de la marca Ford agrupados por tipo y año
+bagof((Type, Year, Ref), vehicle(ford, Ref, Type, _, Year), FordVehicles),
+
+% Caso 3: Calcular el valor total de un inventario filtrado por tipo “Sedan” sin exceder $500,000
+findall(Price, (vehicle(_, Ref, sedan, Price, _), Price =< 500000), SedanPrices),
+sum_list(SedanPrices, TotalValue),
