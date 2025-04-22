@@ -15,5 +15,8 @@ Agrupar vehículos por marca, tipo y año.
 
 Generar reportes de inventario que prioricen los vehículos más económicos si se exceden los límites.
 
+---VIDEO---
+https://youtu.be/bE-XuKMxkmg
+
 ![image](https://github.com/user-attachments/assets/a6877da3-e844-4751-a6e1-c222ad519817)
 
